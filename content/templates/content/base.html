@@ -1,0 +1,474 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> {% block page_title %}SMV-DTU  {% endblock %} </title>
+        <link rel="icon" type="image/jpg" href="{% static  "common/images/SMV-Logo" %}">
+            
+        <link href="{% static 'common/font-awesome-4.7.0/css/font-awesome.css' %}" rel="stylesheet">
+
+        <link href="{% static 'common/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'common/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'common/css/scrolling-nav.css' %}" rel="stylesheet">
+        <link href="{% static 'common/css/full-slider.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" /> 
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'common/css/bootstrap-lightbox.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'common/css/lightbox.css' %}" >
+
+    <link href="{% static 'common/css/aos.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+             <link href="{% static 'common/css/base.css' %}" rel="stylesheet">
+    <style>
+       #map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+   
+ </style>
+
+    </head>
+
+
+       <body onload="myFunction()" >
+
+<div id ="loader"> <div id ="starting_logo"><img id = "starting_img" src="{% static  "common/images/SMV-Logo" %}" alt="My image"/></div> </div>
+<div id="myDiv" class="animate-bottom" >
+        <nav class="navbar navbar-default navbar-fixed-top navbar_property" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class=" initial_button navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                       
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top"><img id = "car_logo" src="{% static  "common/images/SMV-Logo" %}" alt="My image"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a class="page-scroll" href="#page-top"></a>
+                        </li>
+                  
+                        <li>
+                            <a class="page-scroll nav_button" href="#about">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll nav_button" href="#achievements">Achievments</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll nav_button" href="#our_ride">Our Ride</a>
+                        </li>
+                          <li>
+                            <a class="page-scroll nav_button" href="#crew">Crew</a>
+                        </li>
+                          <li>
+                            <a class="page-scroll nav_button" href="#partners">Partners</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll nav_button" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Full Page Image Background Carousel Header -->
+        <header id="myCarousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+   <!-- Wrapper for Slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <!-- Set the first background image using inline CSS below. -->
+                    <div class="fill" ><img class ="slide_img"src="{% static  "common/images/smv_slider4.jpg" %}" alt="My image"/></div>
+                    <div class="carousel-caption">
+                        <h2>DTU SUPERMILEAGE</h2>
+                    </div>
+                </div>
+                {% for s in slide %}
+                <div class="item">
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill" ><img class ="slide_img" src="{{ s.slide_image.url}}" alt="My image"/></div>
+                    <div class="carousel-caption">
+                        <h2>{{s.caption }}</h2>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </header>
+    
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 id ="about_top_heading">About</h1>
+                        {% for a in about %}
+                        {{a.info}}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!--Achievemnets Section -->
+        <section id="achievements" class="services-section">
+      <section id="About">
+        <header>
+         <h1>Achievments</h1>
+       
+        </header>
+        <main>
+        {% for a in achievement %}
+        <div id="">
+            <div id="content">
+                <h4>{{ a.date }}</h4>
+                <h4>{{a.title }}</h4>
+                <p>{{ a.content }}</p>
+            </div>
+            <div id="gol-img"><a href="#id1"><img src="{{ a.achievments_image.url }}" alt="My image"/></a></div>
+            <div id="gol-hide"><a href="#id"><img src="{{ a.achievments_image.url }}"></a></div>
+            <div id="empty"></div>
+        </div>
+        {% endfor %}
+         <div ><button id ="but">OUR <br>STORY<br> CONTINUES <br> ...</button></div>
+
+        
+        <section id="line"></section>
+
+        </main>
+            </section>
+            </section>
+        <!-- Our Ride Section -->
+        <section id="our_ride" class="contact-section">
+            <div class="container">
+              <h1>Our Ride</h1>
+            <div id = "main_ride_box">
+<div class="pane">
+  
+{% for r in ride%}
+     <a href="{{r.our_ride_image.url}}" data-lightbox="roadtrip" class="item"> <img class = "ride-img" src="{{r.our_ride_image.url}}"  ></a>
+{% endfor %}
+</div>
+<button class ="ride_button_class" id="leftb"><img class="button_img"   src="{% static  "common/images/prev.png" %}"></button>
+<button class ="ride_button_class"  id="rightb"><img class="button_img"  src="{% static  "common/images/next.png" %}"></button>
+</div>
+
+  
+            </div>
+        </section>
+
+
+    <!-- Our Crew Section -->
+<div id  = "relative wrapper">
+    <div id ="crew"> <p> .</p>
+    <p>. </p>
+
+
+   <h1 id ="crew_heading"><center>Crew</center></h1>
+
+ 
+  <div class="col-lg-1"></div>
+    <div  class="col-lg-7">For an easy revert if it's just a mistake (perhaps you forked a repo, then ended up pushing to the original instead of to a new one) here's another possibility:
+
+git reset --hard 71c27777543ccfcb0376dcdd8f6777df055ef479
+Obviously swap in that number for the number of the commit you want to return to.
+
+Everything since then will be deleted once you push again. To do that, the next step would be:</div>
+  
+    <div id ="button_wala" class="col-lg-4"  >
+<a  class="push_button red" onclick="myFunction3()" >Our Esteem Team</a>
+
+    </div>
+
+    </div>
+    <div id = "empty_crew_div" class="col-lg-12" ></div>
+    <div id = "our_crew"> 
+<p>.</p>
+               <h3 id ="crew_faculty_top"><center>Faculty-Head</center></h3>
+        <div id = "faculty_wrapper">
+     <!--    <div class ="post col-lg-2 " id =  "empty" >.</div> -->
+        <div class ="post col-lg-4 " id =  "faculty_head" >
+        {% for s in sir %}
+            <img  id ="faculty_pic " class="img" style="height: 300px"  src="{{ s.sir_img.url }}" alt="My image"/>
+            </div>
+<!--              <div class ="post col-lg-2 " id =  "empty" >.</div> -->
+            <div  id ="faculty_disc" class ="col-lg-4 " >
+             
+        
+            <div class ="faculty_info_1"><h3><strong><center>{{s.title}}</center></strong></h3></div>
+            <div class ="faculty_info_1"><h4><u><center>{{s.text_1}}</center></u></h4></div>
+            <div class ="faculty_info_1"><h4><u><center>{{s.text_2}}</center></u></h4></div>
+            <div class ="faculty_info_1"><h4><u><center>{{s.text_3}}</center></u></h4></div>
+        
+            </div>
+            {% endfor %}
+           
+        </div>
+                <div class="col-lg-2" ></div>
+           
+        </div>
+                 <h3><center>Student-Members</center></h3> 
+            <div id ="members">
+            {% for m in crew_members %}
+            <div class ="faculty_info">{{ m.title }}</div>
+            {% endfor %}
+           
+            </div>
+
+
+
+<!--SPONSORS -->
+<div id = "sliding_wrapper">
+ <div id ="crew_wrapper">
+
+    <section id="partners" class="services-section aos-item partners" aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" id="sponsors-container">
+                        <center><h1 id ="sponsors-heading">Partners</h1></center>
+                    <div id ="partners_wrapper">
+                    {% for p in partners %}
+                       
+                        {% if forloop.first %}
+                        <div class="row partners_section">
+                        {% endif %}
+                            <div class="col-sm-3 partners_img logo-div">
+
+                                <div id ="img_div"><p><img class="partner_inner_img" src="{{p.logo.url}}" width="200px" height="200px" alt="My image"/></p></div>
+                                <h3 class ="logo_heading"><a href="{{p.links}}" target="_blank" >{{p.name}}</a></h3>
+                            </div>
+                        {% if forloop.counter|divisibleby:"4" %}
+
+                            </div>
+                            {% if not forloop.last %}
+                                <div class="row partners_section">
+                            {% endif %}
+                        {% endif %}
+                        {% if forloop.last %}
+                            </div>
+                        {% endif %}
+
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
+
+ 
+
+
+               <!--Contact  Section -->
+        <section id="contact" class="services-section">
+         <section class="do-social-link-section">
+        <div class="container contact_property">
+            <div class="row">
+                <a href="https://www.facebook.com/DTUSupermileage/" class="do-facebook" target="_blank">
+                    <span>
+                        <i class="fa fa-facebook"></i>
+                    </span>
+                    FACEBOOK
+                </a>
+            
+                <a href="https://twitter.com/DTUsupermileage?s=09" class="do-twitter" target="_blank">
+                    <span>
+                        <i class="fa fa-twitter"></i>
+                    </span>
+                    TWITTER
+                </a>
+           
+
+            <a href="https://plus.google.com/+DtusupermileageBlogspot" class="do-google" target="_blank">
+                    <span>
+                  <i class="fa fa-google-plus" aria-hidden="true" target="_blank"></i>
+                    </span>
+                       Google
+</a>
+            <a href="https://www.instagram.com/p/-Uo2M9PQxB/" class="do-instagram" target="_blank">
+                    <span>
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                    Instagram
+</a>
+
+ <a href="https://www.youtube.com/channel/UCmhsT2sLXRiRriLFry6mvxg" class="do-youtube" target="_blank">
+                    <span>
+                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                    </span>
+                       Youtube
+</a>
+            </div>
+        </div>
+    </section>
+
+
+            <div class="container cn_contact">
+            <center><h1> </h1></center>
+                <div class="row contacts ">
+
+                    <div class="col-lg-6">
+               <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5uoryxTrl5Oz5A9uiUqhS6ciJH-so604&callback=initMap">
+    </script>          
+          <!-- GOOGLEMAP -->            
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat:28.7501, lng: 77.1177};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+                    </div>
+
+                      <!-- CONTACT INFO -->
+                          <div class="col-lg-6" id = "contact_address_info"><h5>Contact Us</h5>
+                          {% for c in contact %}
+      <div><i class="fa fa-phone icon-2x" style="color:green; "></i> +91{{c.number }}</div>
+      <div><i class="fa fa-map-marker icon-2x" style="color:orange;"></i> {{c.address }}</div>
+      <div><i class="fa fa-envelope-o icon-2x" style="color:yellow;"></i> {{c.email }}</div>
+
+
+       {% endfor %}
+      </div>
+                </div>
+
+            </div>
+
+                <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                      <p style="color:rgb(17, 17, 17);">Copyright <i class="fa fa-copyright"></i><a  href="https://github.com/VatsalBatra/" target="_blank" >Vatsal Batra </a><a href="https://www.facebook.com/vatsal.batra" style="color:#4267b2" target="_blank"><i  class="fa fa-facebook-official" aria-hidden="true"></i></a></p>
+                      <p><i class="fa fa-phone icon-2x" style="color:green; "></i> 9650783868</p>
+                </div>
+            </div>
+        </footer>
+
+        </section>
+        </div>
+    </div>
+           <script src="{% static 'common/js/jquery-2.2.1.min.js' %}"></script>
+           <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+               <script src="{% static 'common/js/jquery.js' %}"></script> 
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+                 <script src="{% static 'common/js/bootstrap.js' %}"></script>
+        <script src="{% static 'common/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'common/js/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'common/js/scrolling-nav.js' %}"></script>    
+
+          
+
+ 
+
+<script src="{% static 'common/js/aos.js' %}"></script>
+<script src="{% static 'common/js/lightbox.js' %}"></script>
+
+<script type="text/javascript">
+
+    $(function(){
+  
+    
+    $('#leftb').click(function(){
+        $('.pane').animate({scrollLeft : '+=300'});        
+    });
+    
+    $('#rightb').click(function(){
+        $('.pane').animate({scrollLeft : '-=300'});
+    });
+});
+</script>         
+
+<script>
+
+    function myFunction3(){
+
+    document.getElementById("sliding_wrapper").style.top= '100%';
+
+       
+    }
+    
+</script>
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage,1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script> 
+<script>
+    $(document).ready(function () {
+              $(".navbar-toggle").on("click", function () {
+                    $(this).toggleClass("active");
+              });
+              $(function(){
+   
+    $(document).on('scroll', function(){
+        // At top of page.
+        var distance = $('#about').offset().top;
+    
+        if ($(document).scrollTop() >= distance)
+        {
+            $('#car_logo').addClass('shadow');
+            $('.navbar-default').addClass('navcolor');
+            $('.navbar-default').removeClass('navbar-default');
+
+
+
+
+        }
+        // Not at top of page.
+        else
+        {
+            $('#car_logo').removeClass('shadow');    
+            $('.navbar').addClass('navbar-default');
+            $('.navbar').removeClass('navcolor');
+
+        }
+    });
+
+});
+        });
+</script>
+</div>
+
+<script>
+    
+</script>
+
+    </body>
+  
+</html>
