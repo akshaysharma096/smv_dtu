@@ -1,0 +1,256 @@
+{% load staticfiles %}
+<html>
+
+{{message}}
+<head>
+
+<link rel="stylesheet" type="text/css" href="{% static 'common/css/materialize.css' %}">
+<link href="{% static 'common/font-awesome-4.7.0/css/font-awesome.css' %}" rel="stylesheet">
+
+<link href="{% static 'common/css/bootstrap.css' %}" rel="stylesheet">
+	<style>
+		#show_ans{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+<div id ="doubt_div">
+ <div id = "error"></div>
+ <div id = "doubt_content_div">
+	Emial:<br/>
+	<input type = "text" name = "first_name" id ="email"/><br/>
+	Doubt: <br />
+	<textarea rows = "10" cols = "70" name = "description" id = "text" placeholder="enter your query..." ></textarea>
+	<br/>
+	<button class="btn waves-effect waves-light"  id = "question_submit">Submit</button>
+	</div>
+	<div id = "down_arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+</div>
+
+	<div id = "solution">
+	
+		<div id = "question_wrapper">
+			<div id ="email_1">
+			</div>
+			<div id = "question">
+			{% for q in ques_list %} 
+				<div class="doubt_div_ques"><p class = 'back_content'>{{ q.question }}</p> - {{ q.email }}</div>
+					<div class = 'ans_div_back'><textarea rows ='10' cols = '70' name = 'ans_description' class = 'ans_text' placeholder= 'your views...' ></textarea><br/><button type="button" class =' btn btn-outline-primary ans_submit_1'>Submit</button></div> <div id = {{ q.id}} class ='show_ans'}></div><button class = 'more_solution_1'>more answers...</button>	
+
+
+
+			{% endfor %}
+<!-- 
+			HOW TO MAKE THIS WORK  -->
+			<!-- {% for a in sol_save %}
+				<div id = {{q.question.id }}> <p class='back_content'>{{a.ans }}</p></div>
+						
+				{% endfor %} -->
+			</div>
+			<div id = "answer"></div>
+
+
+		</div>
+
+
+	</div>
+</body>
+           <script src="{% static 'common/js/jquery-2.2.1.min.js' %}"></script>
+           <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+               <script src="{% static 'common/js/jquery.js' %}"></script>
+               <script src ="{% static 'common/js/materialize.js' %}"></script> 
+          <script src="{% static 'common/js/bootstrap.js' %}"></script>
+        <script src="{% static 'common/js/bootstrap.min.js' %}"></script>
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+
+<script src = "{% static 'common/js/forum.js' %}"></script>
+<script type="text/javascript">
+function onBodyLoad(){
+	forum.init({'submit':'question_submit',
+				'email':'email',
+				'text':'text',
+				'box':'question',
+				'ans_submit':'ans_submit'});
+}
+
+window.addEventListener('load',onBodyLoad)
+	
+</script>
+<style>
+	div#doubt_div {
+    padding: 27px;
+    box-shadow: 10px 10px 10px #888888;
+    box-shadow: 10px black;
+    position: fixed;
+    background-color: aliceblue;
+    width: 100%;
+    height: 225px;
+    
+    }
+
+div#solution {
+	padding: 0 10px;
+    padding-top:20%;
+}
+button.btn.btn-outline-primary.ans_submit_1 {
+    color: black;
+    background-color: transparent;
+    /* border-color: black; */
+    border: 1px solid black;
+    padding: 0 40px;
+   
+}
+button.btn.btn-outline-primary.ans_submit {
+    color: black;
+    background-color: transparent;
+    /* border-color: black; */
+    border: 1px solid black;
+    padding: 0 40px;
+   
+}
+button.btn.btn-outline-primaryans_submit {
+    color: black;
+    background-color: transparent;
+    /* border-color: black; */
+    border: 1px solid black;
+    padding: 0 40px;
+
+}
+button#question_submit {
+    margin: 5;
+    display: flex;
+    margin-left: 47%;
+}
+div#down_arrow {
+    display: flex;
+    justify-content: center;
+
+ 	
+
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+ 
+
+
+    }
+
+
+@keyframes jump {
+  from, 20%, 53%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0,-4px,0);
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.jump {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+div#up_arrow {
+    display: flex;
+    justify-content: center;
+}
+/*.doubt_div_ques {
+    box-shadow: 2px 4px 10px #888888;
+    border-radius: 7px;
+    margin-bottom: 22px;
+}*/
+.doubt_div_ques {
+    box-shadow: 1px 1px 5px 1px;
+    border-radius: 1px;
+    margin-bottom: 22px;
+    background-color:cornsilk;
+}
+button.more_solution_1 {
+    background-color: transparent;
+    border: white;
+    color: red;
+}
+button.more_solution {
+    background-color: transparent;
+    border: white;
+    color: red;
+}
+.ans_div_back {
+    display: flex;
+}
+.more_solution_1:hover{
+	color: blue
+
+}
+.more_solution:hover{
+	color: blue
+
+}
+</style>
+<script type="text/javascript">
+var flag =0;
+	$(document).scroll(function(){
+
+		if(flag ==0){
+		if(window.scrollY > 250){
+			flag =1;
+		$("#down_arrow").css("display",'flex')
+		$("#doubt_div").animate({height: "10px"},1000);
+		
+		$("#solution").css("padding-top","5%")
+
+		$("#down_arrow").css("animation-name",'jump')
+    $("#doubt_content_div").css("display","none")
+
+				}
+	}
+
+	})
+	$("#down_arrow").click(function(){
+		flag =0;
+		$("#doubt_div").animate({height:"225px"},500)
+		$("#doubt_content_div").css("display","block")
+		console.log($("#question_submit").siblings()[7])
+		$("#solution").css("padding-top","20%")
+		$("#down_arrow").css("display",'none')
+		$("#down_arrow").css("animation-name",'none')
+		// animation-name: jump;
+
+		
+	
+	})
+	// 	$(document).scroll(function(){
+
+	// 	console.log(window.scrollY)
+	
+	// 	if(window.scrollY < 35){
+	// 		flag =0;
+	// 	$("#doubt_div").animate({height: "240px"},1500);
+	// 	$("#doubt_content_div").css("display","block")
+	// 	}
+	// })
+
+		
+</script>
+</html>

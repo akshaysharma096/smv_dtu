@@ -24,5 +24,12 @@ from .views import home
 
 urlpatterns = [
     url(r'^$', content_views.first_page),
+    url(r'^forum/$',content_views.forum,name = 'forum'),
+    url(r'^forum/add/$',content_views.add,name = 'add'),
+    url(r'^forum/content/$',content_views.content,name = 'content'),
+    url(r'^forum/addans/$',content_views.add_ans,name = "addans"),
+    url(r'^forum/upload/$',content_views.upload,name = "upload"),
+    url(r'^forum/all_ans/$',content_views.all_ans,name = "all"),
     url(r'^admin/', admin.site.urls),
+
 ] + static.static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
