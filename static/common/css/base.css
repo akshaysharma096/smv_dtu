@@ -4,10 +4,15 @@ body{
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * 
                     CREW BUTTON
 * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
+div#interactive_button {
+    width: 100%;
+}
+.push_button_1 {
+       width: unset;
+}
 .push_button {
     position: relative;
-    width:220px;
+
     height:40px;
     text-align:center;
     color:#FFF;
@@ -16,6 +21,9 @@ body{
       font-family: "Roboto Slab";
     display: block;
     margin: 30px;
+}
+.push_button_1 {
+       width: unset;
 }
 .push_button:before {
     background:#f0f0f0;
@@ -777,6 +785,14 @@ div#img_div_faculty {
     top: -33.5px;
     left: 20px;
     justify-content: center;
+}
+#interactive_button {
+    width: 100%;
+    padding-top: 21px;
+    /* height: 200px; */
+    top: -33.5px;
+    /* left: 37%; */
+    /* justify-content: center; */
 }
 a:focus, a:hover {
     color: black;
