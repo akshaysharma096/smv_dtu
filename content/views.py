@@ -15,11 +15,9 @@ from urllib.parse import urljoin
 import sys
 import json
 from django.shortcuts import render
-from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.template import Context, Template
 from django.template import RequestContext
-from weasyprint import HTML, CSS
 from django.template.loader import get_template
 from django.http import HttpResponse
 from django.conf import settings

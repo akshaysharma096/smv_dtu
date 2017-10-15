@@ -21,6 +21,7 @@ div#interactive_button {
       font-family: "Roboto Slab";
     display: block;
     margin: 30px;
+    width: 51%;
 }
 .push_button_1 {
        width: unset;
@@ -86,7 +87,6 @@ div#interactive_button {
     background-image:-o-linear-gradient(top,#FD5800, #EE4900);
     background-image:linear-gradient(top, #FD5800, #EE4900);
 }
-
 
 
 
@@ -837,6 +837,8 @@ section#partners {
 .container.contact_property {
     margin-left: 0px;
 }
+    
+
 
 @media screen and (max-width: 881px){
     div#faculty_head {
@@ -967,7 +969,7 @@ div#sliding_wrapper {
     box-sizing: border-box;
     position: absolute;
     /* width: 99%; */
-    top: 81%;
+    top: 83%;
     transition: 1.2s ease-in-out;
 }
 }
@@ -1035,5 +1037,5 @@ img.partner_inner_img {
     display: none;
 }
 }
-    
+
 
